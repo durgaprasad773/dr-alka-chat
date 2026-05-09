@@ -20,7 +20,7 @@ import {
 } from '../services/chatApi';
 import { getHeaderMaxLength } from '../utils/helpers';
 
-export function ChatbotFullPage({ config = {} }) {
+export function ChatbotFullPage({ config = {}, onSettingsLoaded }) {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showStarterQuestions, setShowStarterQuestions] = useState(true);
@@ -110,6 +110,10 @@ export function ChatbotFullPage({ config = {} }) {
           brandColour: settings.BrandColour || prev.brandColour,
           textColour: settings.TextColour || prev.textColour,
         }));
+
+        if (onSettingsLoaded) {
+          onSettingsLoaded({ logoUrl: settings.LogoUrl || '', clinicName: settings.ClinicName || '' });
+        }
 
         if (settings.IntroMessage) {
           setMessages([{

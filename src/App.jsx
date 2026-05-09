@@ -197,6 +197,7 @@ function DividerTitle({ children }) {
 
 function App() {
   const assistantRef = useRef(null);
+  const [heroLogoUrl, setHeroLogoUrl] = React.useState('');
 
   const scrollToAssistant = () => {
     const el = document.getElementById('ask-assistant');
@@ -287,9 +288,18 @@ function App() {
                 color: '#fff', overflow: 'hidden',
               }}
             >
-              <span style={{ fontFamily: 'Georgia, serif', fontSize: 62, lineHeight: 1, fontWeight: 900, letterSpacing: '-0.08em' }}>
-                AH
-              </span>
+              {heroLogoUrl ? (
+                <img
+                  src={heroLogoUrl}
+                  alt="Arokia Health logo"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                />
+              ) : (
+                <span style={{ fontFamily: 'Georgia, serif', fontSize: 62, lineHeight: 1, fontWeight: 900, letterSpacing: '-0.08em' }}>
+                  AH
+                </span>
+              )}
             </div>
 
             <h1 style={{ margin: '0 0 8px', fontSize: 'clamp(34px, 7vw, 50px)', lineHeight: 1.04, letterSpacing: '-0.05em', fontWeight: 950, color: '#162d42' }}>
@@ -345,7 +355,7 @@ function App() {
           </header>
 
           {/* Chat Widget */}
-          <ChatbotFullPage />
+          <ChatbotFullPage onSettingsLoaded={(settings) => { if (settings.logoUrl) setHeroLogoUrl(settings.logoUrl); }} />
 
           {/* Feature card CTAs */}
           <section
