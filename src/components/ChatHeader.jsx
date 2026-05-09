@@ -9,10 +9,17 @@ export function ChatHeader({ clinicName, logoUrl, onClose, brandColour, showClos
       <div className="flex items-center gap-[11px]">
         {/* Avatar */}
         <div
-          className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-white font-black text-[13px] overflow-hidden"
+          className="w-10 h-10 rounded-full flex-shrink-0 overflow-hidden flex items-center justify-center text-white font-black text-[13px]"
           style={{ background: 'linear-gradient(135deg, #102a3f, #c8a25b)' }}
         >
-          AA
+          {logoUrl ? (
+            <img
+              src={logoUrl}
+              alt="Assistant avatar"
+              className="w-full h-full object-cover"
+              onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.parentElement.innerText = 'AA'; }}
+            />
+          ) : 'AA'}
         </div>
         <div>
           <div className="font-black text-[15px] text-[#162d42] leading-[1.2]">{clinicName || "Ask Dr Arokia's Assistant"}</div>
