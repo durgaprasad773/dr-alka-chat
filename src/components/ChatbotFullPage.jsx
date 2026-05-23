@@ -38,7 +38,7 @@ export function ChatbotFullPage({ config = {}, onSettingsLoaded }) {
       : 'https://neurax-python-be-emhfejathhhpe6h3.uksouth-01.azurewebsites.net',
     indexName: 'default',
     welcomeMessage: null,
-    clinicName: "Ask Dr Arokia's Assistant",
+    clinicName: "Ask Dr Alka",
     logoUrl: '',
     privacyNoticeText: "Educational only. Not a substitute for professional advice, diagnosis, treatment, medication advice or crisis support.",
     bookNowText: '',
@@ -93,7 +93,7 @@ export function ChatbotFullPage({ config = {}, onSettingsLoaded }) {
         setChatConfig(prev => ({
           ...prev,
           welcomeMessage: settings.IntroMessage || null,
-          clinicName: settings.ClinicName || "Ask Dr Arokia's Assistant",
+          clinicName: settings.ClinicName || "Ask Dr Alka",
           logoUrl: settings.LogoUrl || '',
           privacyNoticeText: settings.PrivacyNoticeText || prev.privacyNoticeText,
           bookNowUrl: settings.BookNowUrl ?? '',
@@ -128,7 +128,7 @@ export function ChatbotFullPage({ config = {}, onSettingsLoaded }) {
         // Set default welcome message
         setMessages([{
           id: 1,
-          text: "Hi, I'm Dr Arokia's AI assistant. I can help you understand Arokia Health, Dr Arokia's private consultation pathways, areas of specialist interest, professional wellbeing support, and how to choose the most appropriate next step.\n\nI can't provide diagnosis, treatment, medication advice, therapy or crisis support. I can help with safe signposting, appointment guidance, and explaining what Dr Arokia may be able to support through a private consultation.",
+          text: "Hi, I'm Ask Dr Alka. I can help you understand Dr Alka's approach to longevity, The Million Hour Club, biological age testing, 10 Years Younger, private consultations, speaking enquiries and the right next step.\n\nI can't provide diagnosis, treatment, medication advice, therapy or crisis support. I can help with safe signposting and explaining the best pathway for you.",
           sender: 'bot',
           timestamp: new Date()
         }]);

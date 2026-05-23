@@ -22,7 +22,7 @@ export function Message({ message, onReaction, onFollowUp, onTopic, isLatestBotM
               />
             ) : 'AA'}
           </div>
-          <span className="text-[10px] text-[#9aa6b5] font-bold">{clinicName || "Ask Dr Arokia's Assistant"}</span>
+          <span className="text-[10px] text-[#9aa6b5] font-bold">{clinicName || "Ask Dr Alka"}</span>
         </div>
       )}
 

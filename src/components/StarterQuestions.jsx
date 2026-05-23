@@ -2,14 +2,14 @@ import React from 'react';
 import { motion } from 'motion/react';
 
 const DEFAULT_QUESTIONS = [
-  "I'd like a private psychiatry consultation. Where do I start?",
-  "Can Dr Arokia help with trauma or relationship-based distress?",
-  "I'm a professional dealing with burnout. Can she help?",
-  "What conditions does Dr Arokia commonly assess?"
+  "How do I apply to The Million Hour Club?",
+  "What is biological age testing and how does it work?",
+  "I want to explore the 10 Years Younger programme — where do I start?",
+  "How can I book a private consultation with Dr Alka?"
 ];
 
 export function StarterQuestions({ questions, onSelectQuestion, isLoading }) {
-  // Use API questions if available, else use Dr Arokia defaults
+  // Use API questions if available, else use Dr Alka defaults
   let questionsList = null;
 
   if (questions && (questions.q1 || questions.q2 || questions.q3)) {

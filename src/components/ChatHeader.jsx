@@ -22,7 +22,7 @@ export function ChatHeader({ clinicName, logoUrl, onClose, brandColour, showClos
           ) : 'AA'}
         </div>
         <div>
-          <div className="font-black text-[15px] text-[#162d42] leading-[1.2]">{clinicName || "Ask Dr Arokia's Assistant"}</div>
+          <div className="font-black text-[15px] text-[#162d42] leading-[1.2]">{clinicName || "Ask Dr Alka"}</div>
           <div className="flex items-center gap-[5px] mt-[3px]">
             <span className="w-2 h-2 rounded-full bg-[#20945f] inline-block"></span>
             <span className="text-[12px] text-[#20945f] font-bold">Online now</span>
