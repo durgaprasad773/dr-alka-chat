@@ -1,7 +1,7 @@
 {
-  "name": "dr-arokia-chat",
+  "name": "dr-alka-chat",
   "version": "1.0.0",
-  "description": "Ask Dr Arokia – AI-powered private consultation landing page for Arokia Health",
+  "description": "Ask Dr Alka – AI-powered longevity landing page for The Million Hour Club",
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",

@@ -4,8 +4,9 @@ export const API_URLS = {
   dotnetApi: 'https://neurax-net-f2cwbugzh4gqd8hg.uksouth-01.azurewebsites.net'
 };
 
-// Direct widget ID for Dr Arokia's assistant
-export const WIDGET_ID = 'b4692909-c2e8-4ccc-b819-a3571d705e3e';
+// Direct widget ID for Dr Alka's assistant
+// TODO: Replace with Dr Alka's actual widget ID from the NeuraScaleX dashboard
+export const WIDGET_ID = '63a86301-5648-47b1-878c-2923c911c9b1';
 
 // Fetch chat response
 export async function fetchImprovedChatResponse(message, sessionId, chatbotId = null, apiBaseUrl = '') {
