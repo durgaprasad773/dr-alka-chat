@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { X } from 'lucide-react';
 import { sendEmail } from '../services/chatApi';
 
-export function EmailFormModal({ isOpen, onClose, chatbotId, brandColour }) {
+export function EmailFormModal({ isOpen, onClose, chatbotId, brandColour, bookNowClicksId }) {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -22,7 +22,7 @@ export function EmailFormModal({ isOpen, onClose, chatbotId, brandColour }) {
     }
     setIsLoading(true);
     try {
-      await sendEmail(formData.name, formData.email, formData.message, chatbotId);
+      await sendEmail(formData.name, formData.email, formData.message, chatbotId, bookNowClicksId);
       setShowSuccess(true);
       setTimeout(() => {
         onClose();

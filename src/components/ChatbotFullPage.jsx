@@ -30,6 +30,7 @@ export function ChatbotFullPage({ config = {}, onSettingsLoaded }) {
   const [sessionTracked, setSessionTracked] = useState(false);
   const [doctorDetails, setDoctorDetails] = useState(null);
   const [showEmailForm, setShowEmailForm] = useState(false);
+  const [bookNowClicksId, setBookNowClicksId] = useState(null);
   const [starterQuestions, setStarterQuestions] = useState(null);
 
   const [chatConfig, setChatConfig] = useState({
@@ -301,7 +302,8 @@ export function ChatbotFullPage({ config = {}, onSettingsLoaded }) {
   const handleBookNow = async () => {
     if (userChatSessionId) {
       try {
-        await trackButtonClick(userChatSessionId, chatConfig.bookNowText, chatbotId);
+        const clickId = await trackButtonClick(userChatSessionId, chatConfig.bookNowText, chatbotId);
+        if (clickId) setBookNowClicksId(clickId);
       } catch (e) {}
     }
     if (chatConfig.bookNowUrl) {
@@ -430,6 +432,7 @@ export function ChatbotFullPage({ config = {}, onSettingsLoaded }) {
         onClose={() => setShowEmailForm(false)}
         chatbotId={chatbotId}
         brandColour={chatConfig.brandColour}
+        bookNowClicksId={bookNowClicksId}
       />
     </>
   );
