@@ -311,7 +311,14 @@ export function ChatbotFullPage({ config = {}, onSettingsLoaded }) {
     }
   };
 
-  const handleSendEmail = () => {
+  const handleSendEmail = async () => {
+    const sid = await createSession();
+    if (sid && chatConfig.sendEmailText) {
+      try {
+        const clickId = await trackButtonClick(sid, chatConfig.sendEmailText, chatbotId);
+        if (clickId) setBookNowClicksId(clickId.trim());
+      } catch (e) {}
+    }
     setShowEmailForm(true);
   };
 
