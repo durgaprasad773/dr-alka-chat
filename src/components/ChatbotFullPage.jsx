@@ -15,6 +15,7 @@ import {
   getStarterQuestions,
   getDoctorDetails,
   fetchUserIP,
+  getWidgetRegistration,
   insertUserChatSession,
   trackButtonClick,
 } from '../services/chatApi';
@@ -26,6 +27,7 @@ export function ChatbotFullPage({ config = {}, onSettingsLoaded }) {
   const [showStarterQuestions, setShowStarterQuestions] = useState(true);
   const [chatbotId, setChatbotId] = useState(null);
   const [userIP, setUserIP] = useState('127.0.0.1');
+  const [widgetWebUrlId, setWidgetWebUrlId] = useState(null);
   const [userChatSessionId, setUserChatSessionId] = useState(null);
   const [sessionTracked, setSessionTracked] = useState(false);
   const [doctorDetails, setDoctorDetails] = useState(null);
@@ -81,6 +83,13 @@ export function ChatbotFullPage({ config = {}, onSettingsLoaded }) {
 
       const ip = await fetchUserIP();
       setUserIP(ip);
+
+      // Fetch widget registration to get WidgetWebUrlId
+      const webUrl = window.location.href;
+      const registration = await getWidgetRegistration(webUrl);
+      if (registration?.WidgetWebUrlId) {
+        setWidgetWebUrlId(registration.WidgetWebUrlId);
+      }
 
       try {
         const details = await getDoctorDetails(id);
@@ -181,7 +190,7 @@ export function ChatbotFullPage({ config = {}, onSettingsLoaded }) {
   const createSession = async () => {
     if (userChatSessionId) return userChatSessionId;
     try {
-      const sessionId = await insertUserChatSession(userIP, chatbotId);
+      const sessionId = await insertUserChatSession(userIP, chatbotId, widgetWebUrlId);
       setUserChatSessionId(sessionId);
       setSessionTracked(true);
       return sessionId;

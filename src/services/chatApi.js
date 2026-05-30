@@ -8,6 +8,28 @@ export const API_URLS = {
 // TODO: Replace with Dr Alka's actual widget ID from the NeuraScaleX dashboard
 export const WIDGET_ID = '63a86301-5648-47b1-878c-2923c911c9b1';
 
+// Get widget registration by web URL
+export async function getWidgetRegistration(webUrl) {
+  try {
+    const response = await fetch(`${API_URLS.dotnetApi}/Registration_NoKey/GetWidgetKeyByWebUrl?webUrl=${encodeURIComponent(webUrl)}`, {
+      method: 'GET',
+      headers: {
+        'accept': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data; // Returns { WidgetWebUrlId, WidgetKey }
+  } catch (error) {
+    console.error('Error fetching widget registration:', error);
+    return null;
+  }
+}
+
 // Fetch chat response
 export async function fetchImprovedChatResponse(message, sessionId, chatbotId = null, apiBaseUrl = '') {
   try {
@@ -268,13 +290,14 @@ export async function fetchUserIP() {
 }
 
 // Insert user chat session
-export async function insertUserChatSession(ipAddress, chatbotId = null) {
+export async function insertUserChatSession(ipAddress, chatbotId = null, widgetWebUrlId = null) {
   try {
     const sessionStartTime = new Date().toISOString();
 
     const requestPayload = {
       IPAddress: ipAddress,
-      SessionStartTime: sessionStartTime
+      SessionStartTime: sessionStartTime,
+      WidgetWebUrlId: widgetWebUrlId || ''
     };
 
     const headers = {
